@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lilly's Landing — Dawson Developments</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:       #2C4A2A;
+      --green-mid:   #3D6B3A;
+      --green-light: #4E7E4B;
+      --gold:        #C4892A;
+      --gold-light:  #D9A84E;
+      --cream:       #F2EDE3;
+      --cream-dark:  #E6DFD2;
+      --text:        #1C2B1A;
+      --text-mid:    #4A5548;
+      --white:       #FDFAF6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    h1, h2, h3, h4 { font-family: 'Georgia', serif; font-weight: 700; line-height: 1.2; }
+    .label {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 76px;
+      background: rgba(28, 43, 26, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(196, 137, 42, 0.25);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { height: 44px; width: 44px; object-fit: contain; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-text .name {
+      font-family: 'Georgia', serif; font-size: 1.05rem; font-weight: 700;
+      color: var(--cream); letter-spacing: 0.1em;
+    }
+    .nav-logo-text .sub {
+      font-family: 'Arial', sans-serif; font-size: 0.62rem; font-weight: 600;
+      color: var(--gold); letter-spacing: 0.22em; text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: 'Arial', sans-serif; font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+      color: rgba(242,237,227,0.75);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      background: var(--green);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(196,137,42,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 20% 60%, rgba(61,107,58,0.4) 0%, transparent 55%),
+        linear-gradient(160deg, #1C3A1A 0%, #2C4A2A 40%, #1A3018 100%);
+    }
+    /* Subtle grid texture */
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 79px,
+        rgba(196,137,42,0.04) 80px
+      ),
+      repeating-linear-gradient(
+        90deg, transparent, transparent 79px,
+        rgba(196,137,42,0.04) 80px
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 0 5%;
+      max-width: 900px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      color: var(--gold); margin-bottom: 28px;
+    }
+    .hero-eyebrow span {
+      display: inline-block; width: 40px; height: 1px;
+      background: var(--gold); vertical-align: middle; margin: 0 12px;
+    }
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      color: var(--white); letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .hero-title em {
+      font-style: italic; color: var(--gold-light);
+    }
+    .hero-subtitle {
+      font-family: 'Arial', sans-serif; font-size: clamp(0.85rem, 2vw, 1rem);
+      color: rgba(242,237,227,0.65); letter-spacing: 0.28em;
+      text-transform: uppercase; margin-bottom: 32px;
+    }
+    .hero-divider {
+      width: 60px; height: 2px; background: var(--gold);
+      margin: 0 auto 32px;
+    }
+    .hero-desc {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(242,237,227,0.85); max-width: 680px;
+      margin: 0 auto 52px; line-height: 1.8;
+    }
+    .hero-cta {
+      display: inline-flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+    }
+    .btn-primary {
+      padding: 15px 38px;
+      background: var(--gold); color: var(--text);
+      font-family: 'Arial', sans-serif; font-size: 0.82rem;
+      font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline {
+      padding: 14px 38px;
+      background: transparent; color: var(--cream);
+      font-family: 'Arial', sans-serif; font-size: 0.82rem;
+      font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      text-decoration: none; border: 1.5px solid rgba(242,237,227,0.4);
+      cursor: pointer; transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .hero-scroll {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .hero-scroll p {
+      font-family: 'Arial', sans-serif; font-size: 0.68rem;
+      letter-spacing: 0.2em; color: rgba(242,237,227,0.4); text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, rgba(196,137,42,0.7), transparent);
+      animation: scrollDrop 2s ease-in-out infinite;
+    }
+    @keyframes scrollDrop {
+      0%, 100% { opacity: 0.4; transform: scaleY(0.7); transform-origin: top; }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ── STATS BAR ── */
+    #stats {
+      background: var(--gold);
+      padding: 0 5%;
+    }
+    .stats-inner {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      max-width: 1100px; margin: 0 auto;
+    }
+    .stat-item {
+      padding: 32px 20px; text-align: center;
+      border-right: 1px solid rgba(28,43,26,0.15);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-size: 2.4rem; font-weight: 700; color: var(--text); line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(28,43,26,0.7);
+    }
+
+    /* ── SECTION SHELL ── */
+    section { padding: 100px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-header { margin-bottom: 64px; }
+    .section-header.centered { text-align: center; }
+    .section-label { color: var(--gold); margin-bottom: 16px; }
+    .section-title { font-size: clamp(2rem, 4vw, 2.8rem); color: var(--green); }
+    .section-title-light { font-size: clamp(2rem, 4vw, 2.8rem); color: var(--white); }
+    .section-rule {
+      width: 52px; height: 3px; background: var(--gold); margin-top: 20px;
+    }
+    .section-rule.centered { margin: 20px auto 0; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .about-text p { color: var(--text-mid); font-size: 1.05rem; margin-bottom: 20px; }
+    .about-pillars {
+      display: grid; grid-template-columns: 1fr; gap: 24px;
+    }
+    .pillar {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 24px; background: var(--cream);
+      border-left: 3px solid var(--gold);
+    }
+    .pillar-icon {
+      flex-shrink: 0; width: 44px; height: 44px;
+      background: var(--green); display: flex; align-items: center; justify-content: center;
+    }
+    .pillar-icon svg { width: 22px; height: 22px; fill: var(--gold); }
+    .pillar h4 { font-size: 1rem; color: var(--green); margin-bottom: 6px; }
+    .pillar p { font-family: 'Arial', sans-serif; font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+
+    /* ── PROJECT INTRO ── */
+    #project-intro {
+      background: var(--green);
+      position: relative; overflow: hidden;
+    }
+    #project-intro::before {
+      content: 'LILLY\'S LANDING';
+      position: absolute; bottom: -20px; right: -10px;
+      font-size: 10vw; font-weight: 700; letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.03); white-space: nowrap; pointer-events: none;
+    }
+    .project-intro-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    .project-intro-text p { color: rgba(242,237,227,0.8); font-size: 1.05rem; margin-bottom: 20px; }
+    .project-location {
+      display: flex; align-items: center; gap: 12px;
+      padding: 20px 24px; background: rgba(196,137,42,0.15);
+      border: 1px solid rgba(196,137,42,0.3); margin-top: 32px;
+    }
+    .project-location svg { flex-shrink: 0; width: 20px; height: 20px; fill: var(--gold); }
+    .project-location p {
+      font-family: 'Arial', sans-serif; font-size: 0.9rem;
+      color: var(--gold-light); margin: 0;
+    }
+    .project-highlights { display: flex; flex-direction: column; gap: 20px; }
+    .highlight-card {
+      padding: 28px 32px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(196,137,42,0.2);
+      border-top: 3px solid var(--gold);
+    }
+    .highlight-card h4 {
+      font-size: 1.1rem; color: var(--gold-light); margin-bottom: 10px;
+    }
+    .highlight-card p {
+      font-family: 'Arial', sans-serif; font-size: 0.88rem;
+      color: rgba(242,237,227,0.7); line-height: 1.65; margin: 0;
+    }
+
+    /* ── COMPONENTS ── */
+    #components { background: var(--cream-dark); }
+    .components-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    }
+    .component-card {
+      background: var(--white); overflow: hidden;
+    }
+    .component-header {
+      padding: 36px 40px 28px;
+      background: var(--green);
+      position: relative;
+    }
+    .component-number {
+      font-family: 'Arial', sans-serif; font-size: 4rem; font-weight: 700;
+      color: rgba(255,255,255,0.06); line-height: 1;
+      position: absolute; top: 16px; right: 24px;
+    }
+    .component-tag {
+      font-family: 'Arial', sans-serif; font-size: 0.68rem;
+      font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .component-title { font-size: 1.5rem; color: var(--white); }
+    .component-body { padding: 36px 40px; }
+    .component-body > p {
+      font-family: 'Arial', sans-serif; font-size: 0.9rem;
+      color: var(--text-mid); line-height: 1.65; margin-bottom: 28px;
+    }
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .feature-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-family: 'Arial', sans-serif; font-size: 0.88rem; color: var(--text-mid);
+    }
+    .feature-list li::before {
+      content: ''; flex-shrink: 0;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); margin-top: 7px;
+    }
+
+    /* Floor-by-floor for brownstone */
+    .floors { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .floor {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 16px 18px; background: var(--cream);
+    }
+    .floor-label {
+      flex-shrink: 0; min-width: 90px;
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--green); padding-top: 2px;
+    }
+    .floor-desc {
+      font-family: 'Arial', sans-serif; font-size: 0.85rem;
+      color: var(--text-mid); line-height: 1.55;
+    }
+
+    /* ── SUSTAINABILITY ── */
+    #sustainability { background: var(--white); }
+    .sustain-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+      margin-top: 0;
+    }
+    .sustain-card {
+      padding: 48px 36px; background: var(--cream);
+      position: relative; overflow: hidden;
+      transition: background 0.25s;
+    }
+    .sustain-card:hover { background: var(--cream-dark); }
+    .sustain-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--gold); transform: scaleX(0);
+      transform-origin: left; transition: transform 0.3s;
+    }
+    .sustain-card:hover::after { transform: scaleX(1); }
+    .sustain-icon {
+      width: 56px; height: 56px; background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 28px;
+    }
+    .sustain-icon svg { width: 26px; height: 26px; fill: var(--gold); }
+    .sustain-card h3 { font-size: 1.25rem; color: var(--green); margin-bottom: 14px; }
+    .sustain-card p {
+      font-family: 'Arial', sans-serif; font-size: 0.9rem;
+      color: var(--text-mid); line-height: 1.7;
+    }
+
+    /* ── AMENITIES ── */
+    #amenities { background: var(--cream); }
+    .amenities-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+    }
+    .amenity-list { display: flex; flex-direction: column; gap: 24px; }
+    .amenity-item {
+      display: flex; gap: 20px; align-items: flex-start;
+    }
+    .amenity-number {
+      flex-shrink: 0; width: 40px; height: 40px;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Arial', sans-serif; font-size: 0.85rem;
+      font-weight: 700; color: var(--gold);
+    }
+    .amenity-item h4 { font-size: 1rem; color: var(--green); margin-bottom: 6px; }
+    .amenity-item p {
+      font-family: 'Arial', sans-serif; font-size: 0.88rem;
+      color: var(--text-mid); line-height: 1.6;
+    }
+    .amenity-visual {
+      position: relative; background: var(--green);
+      padding: 48px 40px; height: 100%;
+    }
+    .amenity-visual .quote {
+      font-size: 1.35rem; color: var(--white); line-height: 1.6;
+      font-style: italic; margin-bottom: 28px;
+    }
+    .amenity-visual .quote-attr {
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .amenity-visual::before {
+      content: '\201C';
+      position: absolute; top: 16px; left: 28px;
+      font-size: 8rem; color: rgba(196,137,42,0.15); line-height: 1;
+    }
+
+    /* ── REGULATORY ── */
+    #regulatory { background: var(--green); }
+    .reg-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+    }
+    .reg-intro p {
+      color: rgba(242,237,227,0.8); font-size: 1.05rem; margin-bottom: 20px;
+    }
+    .reg-badge {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 14px 20px; background: rgba(196,137,42,0.2);
+      border: 1px solid rgba(196,137,42,0.4); margin-top: 12px;
+    }
+    .reg-badge svg { width: 18px; height: 18px; fill: var(--gold); flex-shrink: 0; }
+    .reg-badge span {
+      font-family: 'Arial', sans-serif; font-size: 0.82rem;
+      font-weight: 600; letter-spacing: 0.1em; color: var(--gold-light);
+    }
+    .reg-specs { display: flex; flex-direction: column; gap: 16px; }
+    .reg-spec {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 24px; background: rgba(255,255,255,0.05);
+      border-left: 3px solid var(--gold);
+    }
+    .reg-spec-name {
+      font-family: 'Arial', sans-serif; font-size: 0.82rem;
+      font-weight: 600; letter-spacing: 0.08em;
+      color: rgba(242,237,227,0.65);
+    }
+    .reg-spec-value {
+      font-family: 'Arial', sans-serif; font-size: 0.9rem;
+      font-weight: 700; color: var(--gold-light);
+    }
+
+    /* ── VISION ── */
+    #vision {
+      background: var(--cream-dark); text-align: center;
+    }
+    .vision-intro {
+      max-width: 780px; margin: 0 auto 72px;
+      font-size: 1.2rem; color: var(--text-mid); line-height: 1.8;
+    }
+    .vision-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    }
+    .vision-card {
+      padding: 44px 32px; background: var(--white);
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .vision-card:hover { border-bottom-color: var(--gold); transform: translateY(-4px); }
+    .vision-card-icon {
+      font-size: 2.2rem; margin-bottom: 20px; display: block;
+    }
+    .vision-card h3 { font-size: 1.2rem; color: var(--green); margin-bottom: 14px; }
+    .vision-card p {
+      font-family: 'Arial', sans-serif; font-size: 0.88rem;
+      color: var(--text-mid); line-height: 1.7;
+    }
+
+    /* ── CTA ── */
+    #contact {
+      background: var(--green); text-align: center;
+      position: relative; overflow: hidden;
+    }
+    #contact::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(196,137,42,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #contact .section-inner { position: relative; z-index: 1; }
+    .cta-title { font-size: clamp(2rem, 5vw, 3.5rem); color: var(--white); margin-bottom: 24px; }
+    .cta-title em { font-style: italic; color: var(--gold-light); }
+    .cta-text {
+      font-family: 'Arial', sans-serif; font-size: 1rem;
+      color: rgba(242,237,227,0.72); max-width: 560px; margin: 0 auto 48px;
+      line-height: 1.75;
+    }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111D10; padding: 52px 5% 36px;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(196,137,42,0.15);
+      margin-bottom: 36px; gap: 48px; flex-wrap: wrap;
+    }
+    .footer-brand { max-width: 300px; }
+    .footer-brand img { height: 52px; margin-bottom: 16px; }
+    .footer-brand p {
+      font-family: 'Arial', sans-serif; font-size: 0.84rem;
+      color: rgba(242,237,227,0.45); line-height: 1.65;
+    }
+    .footer-links h5 {
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 18px;
+    }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      font-family: 'Arial', sans-serif; font-size: 0.84rem;
+      color: rgba(242,237,227,0.55); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p {
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      color: rgba(242,237,227,0.3);
+    }
+    .footer-bottom span { color: var(--gold); opacity: 0.6; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid,
+      .project-intro-grid,
+      .components-grid,
+      .amenities-grid,
+      .reg-grid { grid-template-columns: 1fr; gap: 40px; }
+      .sustain-grid,
+      .vision-cards { grid-template-columns: 1fr 1fr; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3) { border-right: 1px solid rgba(28,43,26,0.15); }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 72px 5%; }
+      .sustain-grid,
+      .vision-cards,
+      .stats-inner { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(28,43,26,0.12); }
+      .stat-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAV ═══ -->
+  <nav>
+    <a class="nav-logo" href="#hero">
+      <img src="dawson-logo.svg" alt="Dawson Developments">
+      <div class="nav-logo-text">
+        <span class="name">DAWSON</span>
+        <span class="sub">Developments</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#project-intro">The Project</a></li>
+      <li><a href="#components">Components</a></li>
+      <li><a href="#sustainability">Sustainability</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="label hero-eyebrow"><span></span>Forest Heights · Edmonton · Alberta<span></span></p>
+      <h1 class="hero-title">Lilly's<br><em>Landing</em></h1>
+      <p class="hero-subtitle">A Dawson Developments Vision</p>
+      <div class="hero-divider"></div>
+      <p class="hero-desc">
+        Edmonton's first luxury sustainable multi-dwelling community—where geothermal energy,
+        solar power, and refined design come together in one of the city's most storied neighbourhoods.
+      </p>
+      <div class="hero-cta">
+        <a href="#project-intro" class="btn-primary">Explore the Project</a>
+        <a href="#contact" class="btn-outline">Express Interest</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <p>Scroll</p>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <div id="stats">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-number">6–8</div>
+        <div class="stat-label">Apartment Units</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Storey Brownstones</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Contiguous Lots</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">Net&#8209;Zero</div>
+        <div class="stat-label">Energy Vision</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="section-header">
+            <p class="label section-label">Who We Are</p>
+            <h2 class="section-title">Luxury Built on a Foundation of Purpose</h2>
+            <div class="section-rule"></div>
+          </div>
+          <p>
+            Dawson Developments is an Edmonton-based residential developer with a singular conviction:
+            that the most beautiful homes should also be the most responsible ones.
+          </p>
+          <p>
+            We design multi-dwelling communities that honour the maturity of established
+            neighbourhoods while advancing the infrastructure of tomorrow—geothermal systems,
+            solar generation, and shared amenities that lower costs and raise quality of life.
+          </p>
+          <p>
+            Every project carries a name and a story. Lilly's Landing is our first—named for
+            Lillian Dawson, whose home anchors the site and whose legacy anchors our values.
+          </p>
+        </div>
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8.5v7L12 19.82 4 15.5v-7L12 4.18z"/></svg>
+            </div>
+            <div>
+              <h4>Luxury by Design</h4>
+              <p>Rooftop patios, master ensuites, open-plan living, and below-grade parking—crafted for residents who expect the best.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 19.51A9.95 9.95 0 0 0 12 22c5.52 0 10-4.48 10-10 0-1.38-.28-2.68-.76-3.88A14.96 14.96 0 0 1 17 8z"/></svg>
+            </div>
+            <div>
+              <h4>Sustainability at the Core</h4>
+              <p>A central geothermal loop and solar array make Lilly's Landing one of Edmonton's most energy-efficient addresses.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+            </div>
+            <div>
+              <h4>Community Centred</h4>
+              <p>Shared green space, a condo association covering heating costs, and design that fosters neighbourly connection.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROJECT INTRO ═══ -->
+  <section id="project-intro">
+    <div class="section-inner">
+      <div class="project-intro-grid">
+        <div class="project-intro-text">
+          <div class="section-header">
+            <p class="label section-label" style="color:var(--gold)">The First Project</p>
+            <h2 class="section-title-light">Lilly's Landing</h2>
+            <div class="section-rule"></div>
+          </div>
+          <p>
+            Situated on two contiguous lots at a prominent corner on 98 Avenue in Forest Heights,
+            Lilly's Landing is a thoughtfully layered development that brings together a scaled
+            apartment building and a series of luxury brownstone row houses on a single, cohesive site.
+          </p>
+          <p>
+            The project takes its name from Lillian Dawson's home—currently occupying the
+            non-corner lot—a nod to the heritage being honoured as the site is reimagined for
+            the next generation of Edmonton residents.
+          </p>
+          <p>
+            Together, the two buildings share infrastructure, green space, and energy systems,
+            creating a micro-community that punches far above its footprint.
+          </p>
+          <div class="project-location">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <p>98 Avenue &amp; Adjacent Lot · Forest Heights · Edmonton, AB</p>
+          </div>
+        </div>
+        <div class="project-highlights">
+          <div class="highlight-card">
+            <h4>Apartment Building — Non-Corner Lot</h4>
+            <p>6–8 two-bedroom units, each with a master ensuite, generous patio, and central stair access. A basement mechanical unit features a forced walk-out patio; an additional north-facing basement unit completes the building.</p>
+          </div>
+          <div class="highlight-card">
+            <h4>Brownstone Row Houses — Corner Lot</h4>
+            <p>Three storeys of refined living: below-grade parking from the lane, open-plan main floor, three-bedroom second floor, and a stunning third-floor entertainment level with rooftop patio and operable doors.</p>
+          </div>
+          <div class="highlight-card">
+            <h4>Shared Infrastructure &amp; Green Space</h4>
+            <p>Below-grade parking is topped with hollow-core panels and turf, creating a snow-protected courtyard. A central geothermal loop and solar array serve both buildings through individual heat pumps per unit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPONENTS ═══ -->
+  <section id="components">
+    <div class="section-inner">
+      <div class="section-header centered">
+        <p class="label section-label">Building Components</p>
+        <h2 class="section-title">Two Buildings. One Vision.</h2>
+        <div class="section-rule centered"></div>
+      </div>
+      <div class="components-grid">
+
+        <!-- Apartment -->
+        <div class="component-card">
+          <div class="component-header">
+            <div class="component-number">01</div>
+            <p class="component-tag">Non-Corner Lot</p>
+            <h3 class="component-title">The Apartment Building</h3>
+          </div>
+          <div class="component-body">
+            <p>
+              A refined 6–8 unit building designed for comfort and efficiency. Every unit is a
+              full two-bedroom home with a master ensuite and private patio—no compromises.
+            </p>
+            <ul class="feature-list">
+              <li>6–8 two-bedroom units, each with master ensuite</li>
+              <li>Generous private patio on every unit</li>
+              <li>Central stair access—clean and community-oriented</li>
+              <li>Basement mechanical unit with walk-out patio access</li>
+              <li>Second basement unit (north-facing, no patio)</li>
+              <li>Solar panels on roof feeding the shared energy association</li>
+              <li>Individual heat pump per unit connected to central geothermal loop</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Brownstone -->
+        <div class="component-card">
+          <div class="component-header">
+            <div class="component-number">02</div>
+            <p class="component-tag">Corner Lot</p>
+            <h3 class="component-title">Brownstone Row Houses</h3>
+          </div>
+          <div class="component-body">
+            <p>
+              A row of three-storey brownstones that redefine what urban luxury looks like
+              in a mature Edmonton neighbourhood. Every level is purpose-built.
+            </p>
+            <div class="floors">
+              <div class="floor">
+                <span class="floor-label">Below Grade</span>
+                <span class="floor-desc">Lane-accessed garage parking, mechanical room, optional flex space (gym / theatre). Elevator shaft provision included.</span>
+              </div>
+              <div class="floor">
+                <span class="floor-label">Main Floor</span>
+                <span class="floor-desc">Open-plan living, dining &amp; kitchen. Home office, walk-in pantry, and half-bath. Street-facing entrance.</span>
+              </div>
+              <div class="floor">
+                <span class="floor-label">Second Floor</span>
+                <span class="floor-desc">Master bedroom with ensuite plus two additional bedrooms and a full shared bath.</span>
+              </div>
+              <div class="floor">
+                <span class="floor-label">Third Floor</span>
+                <span class="floor-desc">Laundry, shared bath, enclosed wet-bar entertainment lounge, and a rooftop patio with large operable doors for seamless indoor-outdoor living.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SUSTAINABILITY ═══ -->
+  <section id="sustainability">
+    <div class="section-inner">
+      <div class="section-header centered">
+        <p class="label section-label">Energy &amp; Environment</p>
+        <h2 class="section-title">Built to Last. Built to Lead.</h2>
+        <div class="section-rule centered"></div>
+      </div>
+      <div class="sustain-grid">
+        <div class="sustain-card">
+          <div class="sustain-icon">
+            <!-- Geothermal / wave icon -->
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm-1 17.93V18a1 1 0 0 1 2 0v1.93A8.001 8.001 0 0 1 4.07 13H6a1 1 0 0 1 0 2H4.07A8.001 8.001 0 0 1 11 4.07V6a1 1 0 0 1 2 0V4.07A8.001 8.001 0 0 1 19.93 11H18a1 1 0 0 1 0-2h1.93A8.001 8.001 0 0 1 11 19.93z"/></svg>
+          </div>
+          <h3>Geothermal Heating &amp; Cooling</h3>
+          <p>
+            A central geothermal loop runs beneath both buildings, serving individual heat
+            pumps in every unit. The result is ultra-efficient year-round climate control
+            with dramatically lower emissions than conventional systems—and lower bills
+            managed through the condo association.
+          </p>
+        </div>
+        <div class="sustain-card">
+          <div class="sustain-icon">
+            <!-- Solar icon -->
+            <svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0-5a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zm0 16a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0v-1a1 1 0 0 1 1-1zM4.22 5.64a1 1 0 0 1 1.42-1.42l.7.7a1 1 0 0 1-1.41 1.42l-.71-.7zm13.14 12.72a1 1 0 0 1 1.42-1.42l.7.71a1 1 0 1 1-1.41 1.41l-.71-.7zM3 12a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2H4a1 1 0 0 1-1-1zm16 0a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2h-1a1 1 0 0 1-1-1zM4.22 18.36l.7-.71a1 1 0 1 1 1.42 1.42l-.71.7a1 1 0 0 1-1.41-1.41zm13.14-12.72l.7-.71a1 1 0 1 1 1.42 1.42l-.71.7a1 1 0 0 1-1.41-1.41z"/></svg>
+          </div>
+          <h3>Solar Power Generation</h3>
+          <p>
+            Photovoltaic panels on the apartment building roof—with potential expansion
+            to the brownstone rooftops—generate clean electricity managed by the condominium
+            association. Heating costs are covered by the association; electricity
+            cost-sharing terms are set to benefit all residents.
+          </p>
+        </div>
+        <div class="sustain-card">
+          <div class="sustain-icon">
+            <!-- Community / green space icon -->
+            <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+          </div>
+          <h3>Shared Green Courtyard</h3>
+          <p>
+            Below-grade parking is covered by hollow-core concrete panels topped with turf,
+            creating a snow-protected, year-round shared amenity space between buildings.
+            No ice, no shovelling—just green space for residents to gather in any season.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ AMENITIES ═══ -->
+  <section id="amenities">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="label section-label">Life at Lilly's Landing</p>
+        <h2 class="section-title">Designed for How You Actually Live</h2>
+        <div class="section-rule"></div>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-list">
+          <div class="amenity-item">
+            <div class="amenity-number">01</div>
+            <div>
+              <h4>Rooftop Patios with Operable Doors</h4>
+              <p>Third-floor brownstone terraces with large operable panels blur the line between interior lounge and open sky—year-round with the geothermal edge.</p>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-number">02</div>
+            <div>
+              <h4>Wet-Bar Entertainment Lounge</h4>
+              <p>An enclosed, beautifully finished entertaining floor on every brownstone's third level—ideal for hosting without compromise.</p>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-number">03</div>
+            <div>
+              <h4>Below-Grade Parking from the Lane</h4>
+              <p>Direct lane access to private parking keeps streets clean and streetscapes elegant while your vehicle stays warm and snow-free.</p>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-number">04</div>
+            <div>
+              <h4>Flexible Lower-Level Space</h4>
+              <p>Optional gym, home theatre, or studio in the brownstone lower level—a customizable space that adapts to how residents want to live.</p>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-number">05</div>
+            <div>
+              <h4>Condo Association — Heating Included</h4>
+              <p>A resident-run association manages geothermal heating and solar generation, covering heating costs across all units for predictable, comfortable winters.</p>
+            </div>
+          </div>
+        </div>
+        <div class="amenity-visual">
+          <p class="quote">
+            "A quiet but powerful geothermal system hums underground, paired with solar panels, ensuring ultra-efficient heating and cooling—energizing homes and families, not utility bills."
+          </p>
+          <p class="quote-attr">— Lilly's Landing Vision Statement</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ REGULATORY ═══ -->
+  <section id="regulatory">
+    <div class="section-inner">
+      <div class="reg-grid">
+        <div class="reg-intro">
+          <div class="section-header">
+            <p class="label section-label" style="color:var(--gold)">Regulatory Context</p>
+            <h2 class="section-title-light">Compliant by Design,<br>Not by Compromise</h2>
+            <div class="section-rule"></div>
+          </div>
+          <p>
+            Lilly's Landing is fully aligned with Edmonton's Small-Scale Residential (RS) Zone,
+            which permits up to eight units on non-corner lots of 600 m² or greater—and allows
+            more complex configurations on corner lots.
+          </p>
+          <p>
+            Recent zoning updates reinforce the design principles already central to our vision:
+            street-facing entrances, front-facing windows, and building proportions that
+            respect and enhance mature neighbourhood character.
+          </p>
+          <div class="reg-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+            <span>Edmonton RS Zone Compliant</span>
+          </div>
+        </div>
+        <div class="reg-specs">
+          <div class="reg-spec">
+            <span class="reg-spec-name">Zone</span>
+            <span class="reg-spec-value">Small-Scale Residential (RS)</span>
+          </div>
+          <div class="reg-spec">
+            <span class="reg-spec-name">Max Units (Non-Corner Lot)</span>
+            <span class="reg-spec-value">8 Units on ≥ 600 m²</span>
+          </div>
+          <div class="reg-spec">
+            <span class="reg-spec-name">Max Building Height</span>
+            <span class="reg-spec-value">10.5 m (3 Storeys)</span>
+          </div>
+          <div class="reg-spec">
+            <span class="reg-spec-name">Max Building Length</span>
+            <span class="reg-spec-value">25 m or 50% of Lot Depth</span>
+          </div>
+          <div class="reg-spec">
+            <span class="reg-spec-name">Street Entrances</span>
+            <span class="reg-spec-value">Front-Facing Required</span>
+          </div>
+          <div class="reg-spec">
+            <span class="reg-spec-name">Side Entrances</span>
+            <span class="reg-spec-value">Max Two</span>
+          </div>
+          <div class="reg-spec">
+            <span class="reg-spec-name">Corner Lot Configuration</span>
+            <span class="reg-spec-value">Complex Mix Permitted</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VISION ═══ -->
+  <section id="vision">
+    <div class="section-inner">
+      <div class="section-header centered">
+        <p class="label section-label">The Bigger Picture</p>
+        <h2 class="section-title">More Than New Housing</h2>
+        <div class="section-rule centered"></div>
+      </div>
+      <p class="vision-intro">
+        Lilly's Landing is a visionary model of eco-responsible, community-centred living—setting
+        a benchmark for the next generation of Edmonton's residential evolution, all within the
+        walkable, river valley-connected fabric of Forest Heights.
+      </p>
+      <div class="vision-cards">
+        <div class="vision-card">
+          <span class="vision-card-icon">🌿</span>
+          <h3>Eco-Responsible Living</h3>
+          <p>
+            Geothermal, solar, and shared green infrastructure ensure that luxury and
+            environmental responsibility are not opposing forces—they are the same thing.
+          </p>
+        </div>
+        <div class="vision-card">
+          <span class="vision-card-icon">🏘️</span>
+          <h3>Neighbourhood Harmony</h3>
+          <p>
+            Forest Heights is walkable, transit-connected, and steps from the river valley.
+            Lilly's Landing adds density thoughtfully—honouring the street, the scale,
+            and the community that surrounds it.
+          </p>
+        </div>
+        <div class="vision-card">
+          <span class="vision-card-icon">🔮</span>
+          <h3>A Benchmark for Edmonton</h3>
+          <p>
+            As the first Dawson Developments project, Lilly's Landing sets the standard for
+            what infill can be: luxurious, efficient, inclusive, and worthy of the city's
+            next chapter.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section id="contact">
+    <div class="section-inner">
+      <h2 class="cta-title">Be Part of<br><em>Lilly's Landing</em></h2>
+      <p class="cta-text">
+        Lilly's Landing is currently in development. Register your interest to receive
+        updates on availability, pre-sales, and community events.
+      </p>
+      <div class="cta-buttons">
+        <a href="mailto:info@dawsondevelopments.ca" class="btn-primary">Register Interest</a>
+        <a href="#project-intro" class="btn-outline">View Project Details</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="dawson-logo.svg" alt="Dawson Developments">
+          <p>
+            Dawson Developments builds luxury sustainable multi-dwelling communities in
+            Edmonton's mature neighbourhoods. Every project honours the land, the street,
+            and the people who call it home.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h5>Project</h5>
+          <ul>
+            <li><a href="#project-intro">Overview</a></li>
+            <li><a href="#components">Building Components</a></li>
+            <li><a href="#sustainability">Sustainability</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#about">About Dawson</a></li>
+            <li><a href="#regulatory">Regulatory</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Location</h5>
+          <ul>
+            <li><a href="#">Forest Heights, Edmonton</a></li>
+            <li><a href="#">98 Avenue, AB</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Dawson Developments. All rights reserved.</p>
+        <p>Built in Edmonton <span>✦</span> Designed for the Future</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
