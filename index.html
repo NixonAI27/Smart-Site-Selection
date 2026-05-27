@@ -274,32 +274,32 @@
 
     /* ── COMPONENTS ── */
     #components { background: var(--cream-dark); }
-    .components-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-    }
     .component-card {
       background: var(--white); overflow: hidden;
     }
     .component-header {
-      padding: 36px 40px 28px;
+      padding: 48px 56px 36px;
       background: var(--green);
       position: relative;
     }
     .component-number {
-      font-family: 'Inter', 'Arial', sans-serif; font-size: 4rem; font-weight: 700;
-      color: rgba(255,255,255,0.06); line-height: 1;
-      position: absolute; top: 16px; right: 24px;
+      font-family: 'Inter', 'Arial', sans-serif; font-size: 7rem; font-weight: 700;
+      color: rgba(255,255,255,0.05); line-height: 1;
+      position: absolute; top: 16px; right: 40px;
     }
     .component-tag {
       font-family: 'Inter', 'Arial', sans-serif; font-size: 0.68rem;
       font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--gold); margin-bottom: 10px;
     }
-    .component-title { font-size: 1.5rem; color: var(--white); }
-    .component-body { padding: 36px 40px; }
+    .component-title { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--white); }
+    .component-body {
+      padding: 48px 56px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
+    }
     .component-body > p {
-      font-family: 'Inter', 'Arial', sans-serif; font-size: 0.9rem;
-      color: var(--text-mid); line-height: 1.65; margin-bottom: 28px;
+      font-family: 'Inter', 'Arial', sans-serif; font-size: 0.95rem;
+      color: var(--text-mid); line-height: 1.75; margin-bottom: 28px;
     }
     .feature-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
     .feature-list li {
@@ -311,22 +311,34 @@
       width: 6px; height: 6px; border-radius: 50%;
       background: var(--gold); margin-top: 7px;
     }
+    .component-left > p { margin-bottom: 28px; }
 
-    /* Floor-by-floor for brownstone */
-    .floors { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    /* Floor-by-floor */
+    .floors-title {
+      font-family: 'Inter', 'Arial', sans-serif; font-size: 0.72rem;
+      font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 16px;
+    }
+    .floors { display: flex; flex-direction: column; gap: 10px; }
     .floor {
-      display: flex; gap: 16px; align-items: flex-start;
-      padding: 16px 18px; background: var(--cream);
+      display: flex; gap: 0; align-items: stretch;
     }
     .floor-label {
-      flex-shrink: 0; min-width: 90px;
-      font-family: 'Inter', 'Arial', sans-serif; font-size: 0.72rem;
+      flex-shrink: 0; width: 100px;
+      font-family: 'Inter', 'Arial', sans-serif; font-size: 0.68rem;
       font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--green); padding-top: 2px;
+      color: var(--white); background: var(--green);
+      padding: 14px 12px; display: flex; align-items: center;
     }
     .floor-desc {
-      font-family: 'Inter', 'Arial', sans-serif; font-size: 0.85rem;
+      font-family: 'Inter', 'Arial', sans-serif; font-size: 0.84rem;
       color: var(--text-mid); line-height: 1.55;
+      background: var(--cream); padding: 14px 16px; flex: 1;
+    }
+
+    @media (max-width: 900px) {
+      .component-body { grid-template-columns: 1fr; gap: 36px; padding: 36px; }
+      .component-header { padding: 36px; }
     }
 
     /* ── SUSTAINABILITY ── */
@@ -558,7 +570,7 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#project-intro">The Project</a></li>
-      <li><a href="#components">Components</a></li>
+      <li><a href="#components">The Brownstone</a></li>
       <li><a href="#sustainability">Sustainability</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -573,8 +585,8 @@
       <p class="hero-subtitle">A Dawson Developments Vision</p>
       <div class="hero-divider"></div>
       <p class="hero-desc">
-        Edmonton's first luxury sustainable multi-dwelling community—where geothermal energy,
-        solar power, and refined design come together in one of the city's most storied neighbourhoods.
+        Edmonton's most refined new address—luxury brownstone row houses powered by geothermal energy
+        and solar, set within one of the city's most storied mature neighbourhoods.
       </p>
       <div class="hero-cta">
         <a href="#project-intro" class="btn-primary">Explore the Project</a>
@@ -591,16 +603,16 @@
   <div id="stats">
     <div class="stats-inner">
       <div class="stat-item">
-        <div class="stat-number">6–8</div>
-        <div class="stat-label">Apartment Units</div>
+        <div class="stat-number">4</div>
+        <div class="stat-label">Levels Per Home</div>
       </div>
       <div class="stat-item">
         <div class="stat-number">3</div>
-        <div class="stat-label">Storey Brownstones</div>
+        <div class="stat-label">Above-Grade Storeys</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">2</div>
-        <div class="stat-label">Contiguous Lots</div>
+        <div class="stat-number">Rooftop</div>
+        <div class="stat-label">Patio &amp; Lounge</div>
       </div>
       <div class="stat-item">
         <div class="stat-number">Net&#8209;Zero</div>
@@ -624,7 +636,7 @@
             that the most beautiful homes should also be the most responsible ones.
           </p>
           <p>
-            We design multi-dwelling communities that honour the maturity of established
+            We design residential communities that honour the maturity of established
             neighbourhoods while advancing the infrastructure of tomorrow—geothermal systems,
             solar generation, and shared amenities that lower costs and raise quality of life.
           </p>
@@ -677,36 +689,36 @@
             <div class="section-rule"></div>
           </div>
           <p>
-            Situated on two contiguous lots at a prominent corner on 98 Avenue in Forest Heights,
-            Lilly's Landing is a thoughtfully layered development that brings together a scaled
-            apartment building and a series of luxury brownstone row houses on a single, cohesive site.
+            Situated on a prominent corner lot on 98 Avenue in Forest Heights, Lilly's Landing
+            is a collection of luxury brownstone row houses designed from the ground up—or
+            rather, from below it—for a life of comfort, elegance, and environmental purpose.
           </p>
           <p>
-            The project takes its name from Lillian Dawson's home—currently occupying the
-            non-corner lot—a nod to the heritage being honoured as the site is reimagined for
-            the next generation of Edmonton residents.
+            The project takes its name from Lillian Dawson, whose legacy anchors the values
+            behind this development: a deep respect for place, for people, and for the kind of
+            home that endures.
           </p>
           <p>
-            Together, the two buildings share infrastructure, green space, and energy systems,
-            creating a micro-community that punches far above its footprint.
+            From the lane-accessed below-grade garage to the rooftop patio under an Edmonton
+            sky, every level of every home has been purposefully designed.
           </p>
           <div class="project-location">
             <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <p>98 Avenue &amp; Adjacent Lot · Forest Heights · Edmonton, AB</p>
+            <p>98 Avenue · Forest Heights · Edmonton, AB</p>
           </div>
         </div>
         <div class="project-highlights">
           <div class="highlight-card">
-            <h4>Apartment Building — Non-Corner Lot</h4>
-            <p>6–8 two-bedroom units, each with a master ensuite, generous patio, and central stair access. A basement mechanical unit features a forced walk-out patio; an additional north-facing basement unit completes the building.</p>
-          </div>
-          <div class="highlight-card">
             <h4>Brownstone Row Houses — Corner Lot</h4>
-            <p>Three storeys of refined living: below-grade parking from the lane, open-plan main floor, three-bedroom second floor, and a stunning third-floor entertainment level with rooftop patio and operable doors.</p>
+            <p>Three above-grade storeys plus a fully finished below-grade level: lane-accessed private parking, open-plan main floor living, three bedrooms above, and a spectacular rooftop patio with entertainment lounge.</p>
           </div>
           <div class="highlight-card">
-            <h4>Shared Infrastructure &amp; Green Space</h4>
-            <p>Below-grade parking is topped with hollow-core panels and turf, creating a snow-protected courtyard. A central geothermal loop and solar array serve both buildings through individual heat pumps per unit.</p>
+            <h4>Geothermal &amp; Solar — Built In</h4>
+            <p>A central geothermal loop and rooftop solar array are woven into the structure itself—not added on. Individual heat pumps serve each home; heating costs are managed by the condo association.</p>
+          </div>
+          <div class="highlight-card">
+            <h4>Green Courtyard &amp; Lane Parking</h4>
+            <p>Below-grade parking is topped with hollow-core panels and turf, creating a snow-protected, year-round courtyard. Streets stay clean; your vehicle stays warm.</p>
           </div>
         </div>
       </div>
@@ -717,56 +729,46 @@
   <section id="components">
     <div class="section-inner">
       <div class="section-header centered">
-        <p class="label section-label">Building Components</p>
-        <h2 class="section-title">Two Buildings. One Vision.</h2>
+        <p class="label section-label">Inside Every Home</p>
+        <h2 class="section-title">Four Levels. Limitless Living.</h2>
         <div class="section-rule centered"></div>
       </div>
-      <div class="components-grid">
 
-        <!-- Apartment -->
-        <div class="component-card">
-          <div class="component-header">
-            <div class="component-number">01</div>
-            <p class="component-tag">Non-Corner Lot</p>
-            <h3 class="component-title">The Apartment Building</h3>
-          </div>
-          <div class="component-body">
+      <div class="component-card">
+        <div class="component-header">
+          <div class="component-number">01</div>
+          <p class="component-tag">Corner Lot · Forest Heights · Edmonton</p>
+          <h3 class="component-title">Lilly's Landing Brownstone Row Houses</h3>
+        </div>
+        <div class="component-body">
+          <div class="component-left">
             <p>
-              A refined 6–8 unit building designed for comfort and efficiency. Every unit is a
-              full two-bedroom home with a master ensuite and private patio—no compromises.
+              A row of three-storey brownstones that redefine what urban luxury looks like in a mature
+              Edmonton neighbourhood. Chic and contemporary, yet harmonious with the charm of Forest Heights—
+              offering four levels of beautifully designed living from below-grade to rooftop sky.
             </p>
             <ul class="feature-list">
-              <li>6–8 two-bedroom units, each with master ensuite</li>
-              <li>Generous private patio on every unit</li>
-              <li>Central stair access—clean and community-oriented</li>
-              <li>Basement mechanical unit with walk-out patio access</li>
-              <li>Second basement unit (north-facing, no patio)</li>
-              <li>Solar panels on roof feeding the shared energy association</li>
-              <li>Individual heat pump per unit connected to central geothermal loop</li>
+              <li>Three above-grade storeys plus fully finished below-grade level</li>
+              <li>Lane-accessed private below-grade garage — warm, snow-free parking</li>
+              <li>Optional elevator shaft provision for future accessibility</li>
+              <li>Open-plan main floor: living, dining, kitchen, home office &amp; pantry</li>
+              <li>Master bedroom with ensuite plus two additional bedrooms</li>
+              <li>Third-floor wet-bar entertainment lounge with full bath &amp; laundry</li>
+              <li>Rooftop patio with large operable doors — seamless indoor-outdoor living</li>
+              <li>Individual heat pump per home on central geothermal loop</li>
+              <li>Solar generation &amp; heating managed by resident condo association</li>
             </ul>
           </div>
-        </div>
-
-        <!-- Brownstone -->
-        <div class="component-card">
-          <div class="component-header">
-            <div class="component-number">02</div>
-            <p class="component-tag">Corner Lot</p>
-            <h3 class="component-title">Brownstone Row Houses</h3>
-          </div>
-          <div class="component-body">
-            <p>
-              A row of three-storey brownstones that redefine what urban luxury looks like
-              in a mature Edmonton neighbourhood. Every level is purpose-built.
-            </p>
+          <div class="component-right">
+            <p class="floors-title">Level by Level</p>
             <div class="floors">
               <div class="floor">
                 <span class="floor-label">Below Grade</span>
-                <span class="floor-desc">Lane-accessed garage parking, mechanical room, optional flex space (gym / theatre). Elevator shaft provision included.</span>
+                <span class="floor-desc">Lane-accessed garage, mechanical room, and optional flex space — gym, home theatre, or studio. Elevator shaft provision included.</span>
               </div>
               <div class="floor">
                 <span class="floor-label">Main Floor</span>
-                <span class="floor-desc">Open-plan living, dining &amp; kitchen. Home office, walk-in pantry, and half-bath. Street-facing entrance.</span>
+                <span class="floor-desc">Open-plan living, dining &amp; kitchen. Home office, walk-in pantry, half-bath, and street-facing entrance.</span>
               </div>
               <div class="floor">
                 <span class="floor-label">Second Floor</span>
@@ -779,8 +781,8 @@
             </div>
           </div>
         </div>
-
       </div>
+
     </div>
   </section>
 
@@ -800,8 +802,8 @@
           </div>
           <h3>Geothermal Heating &amp; Cooling</h3>
           <p>
-            A central geothermal loop runs beneath both buildings, serving individual heat
-            pumps in every unit. The result is ultra-efficient year-round climate control
+            A central geothermal loop runs beneath the development, serving individual heat
+            pumps in every home. The result is ultra-efficient year-round climate control
             with dramatically lower emissions than conventional systems—and lower bills
             managed through the condo association.
           </p>
@@ -813,10 +815,9 @@
           </div>
           <h3>Solar Power Generation</h3>
           <p>
-            Photovoltaic panels on the apartment building roof—with potential expansion
-            to the brownstone rooftops—generate clean electricity managed by the condominium
-            association. Heating costs are covered by the association; electricity
-            cost-sharing terms are set to benefit all residents.
+            Photovoltaic panels on the brownstone rooftops generate clean electricity managed
+            by the condominium association. Heating costs are covered by the association;
+            electricity cost-sharing terms are structured to benefit every resident.
           </p>
         </div>
         <div class="sustain-card">
@@ -827,8 +828,8 @@
           <h3>Shared Green Courtyard</h3>
           <p>
             Below-grade parking is covered by hollow-core concrete panels topped with turf,
-            creating a snow-protected, year-round shared amenity space between buildings.
-            No ice, no shovelling—just green space for residents to gather in any season.
+            creating a snow-protected, year-round courtyard above. No ice, no shovelling—
+            just green space for residents to gather in any season.
           </p>
         </div>
       </div>
@@ -902,9 +903,9 @@
             <div class="section-rule"></div>
           </div>
           <p>
-            Lilly's Landing is fully aligned with Edmonton's Small-Scale Residential (RS) Zone,
-            which permits up to eight units on non-corner lots of 600 m² or greater—and allows
-            more complex configurations on corner lots.
+            Lilly's Landing is fully aligned with Edmonton's Small-Scale Residential (RS) Zone.
+            Situated on a corner lot, the site supports the complex brownstone row-house
+            configuration—with height, length, and entrance design all meeting current standards.
           </p>
           <p>
             Recent zoning updates reinforce the design principles already central to our vision:
@@ -922,8 +923,8 @@
             <span class="reg-spec-value">Small-Scale Residential (RS)</span>
           </div>
           <div class="reg-spec">
-            <span class="reg-spec-name">Max Units (Non-Corner Lot)</span>
-            <span class="reg-spec-value">8 Units on ≥ 600 m²</span>
+            <span class="reg-spec-name">Lot Type</span>
+            <span class="reg-spec-value">Corner Lot — Complex Config.</span>
           </div>
           <div class="reg-spec">
             <span class="reg-spec-name">Max Building Height</span>
@@ -1016,8 +1017,8 @@
         <div class="footer-brand">
           <img src="dawson-logo.svg" alt="Dawson Developments">
           <p>
-            Dawson Developments builds luxury sustainable multi-dwelling communities in
-            Edmonton's mature neighbourhoods. Every project honours the land, the street,
+            Dawson Developments builds luxury sustainable homes in Edmonton's mature
+            neighbourhoods. Every project honours the land, the street,
             and the people who call it home.
           </p>
         </div>
@@ -1025,7 +1026,7 @@
           <h5>Project</h5>
           <ul>
             <li><a href="#project-intro">Overview</a></li>
-            <li><a href="#components">Building Components</a></li>
+            <li><a href="#components">The Brownstone</a></li>
             <li><a href="#sustainability">Sustainability</a></li>
             <li><a href="#amenities">Amenities</a></li>
           </ul>
