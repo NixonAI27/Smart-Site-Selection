@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+:root {
+  --dark-green: #2C4A2A;
+  --light-green: #5A7C59;
+  --accent-gold: #C4892A;
+  --cream: #F2EDE3;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #FAFAF8;
+  color: #333333;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  text-align: left;
+}
