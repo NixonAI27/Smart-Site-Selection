@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+*.db
+.env
+backend/uploads/
+backend/chroma_db/
+backend/finetuning_data/
+frontend/dist/
+frontend/node_modules/

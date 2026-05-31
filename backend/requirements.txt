@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+anthropic
+pdfplumber
+pymupdf
+python-docx
+openpyxl
+ezdxf
+Pillow
+chromadb
+sentence-transformers
+reportlab
+python-dotenv
